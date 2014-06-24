@@ -1,7 +1,7 @@
 PRO Landsat_invert_from_Aaron
 
 ; Weight Radiances
-file_name = 'C:\Users\ejipci\Documents\Emmett_Files\Work\Landsat TIRS\Data From Aaron\Merged_C_400.txt'
+file_name = 'Merged_C_400.txt'
 ;datafile  = READ_ASCII(file_name, DATA_START=0)
 n_plus_matt = 6180    ; Ind. observations.  The first col. are Matt's wts.  need to skip them.
 r           = 82      ; Prdictor variables
@@ -19,7 +19,7 @@ close, 1
 ;plot, data(0,*), title='Matts Weights'
 ;window, 1
 ;plot, data(5000,*), title='A Sample Set of Wt. Radiances'
-setcolor
+;setcolor
 ; Omit the first column of Ghost "weights"
 L = FLTARR(n, r)
 L = data[1:n, *]
@@ -47,7 +47,7 @@ L_ones[*,1:r] = L   ; put the rest of L into the new L matrix
 ; Col 1 = Longitude
 ; Col 2 = BIAS VALUES
 ; Col 3 = Pixel position
-file_name = 'C:\Users\ejipci\Documents\Emmett_Files\Work\Landsat TIRS\Data From Aaron\Biases.txt'
+file_name = 'Biases.txt'
 datafile  = READ_ASCII(file_name, DATA_START=0)  ; 3 x 90
 Bias = datafile.(0) *(-1)
 ;plot, Bias, title='Bias Radiances'
